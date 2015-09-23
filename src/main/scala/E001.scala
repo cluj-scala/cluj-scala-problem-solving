@@ -6,15 +6,12 @@ https://projecteuler.net/problem=1
  */
 
 object E001 extends App {
-
-  def sumMultiples(multiple: Int, n: Int): Int = 1 until n filter(_ % multiple == 0) sum
-
-  def sumMultiplesOf3And5(n: Int): Int = sumMultiples(3, n) + sumMultiples(5, n)
+  def sumMultiples(multiple: Int, n: Int) = 1 until n filter (_ % multiple == 0) sum
+  def sumMultiplesOf3And5(n: Int) = sumMultiples(3, n) + sumMultiples(5, n) - sumMultiples(3 * 5, n)
 
   override def main (args: Array[String]) {
-    val n: Int = 1000
-    val sum: Int = sumMultiplesOf3And5(n)
+    val n = 1000
+    val sum = sumMultiplesOf3And5(n)
     println(s"The sum of all the multiples of 3 or 5 below $n is $sum")
   }
-
 }
