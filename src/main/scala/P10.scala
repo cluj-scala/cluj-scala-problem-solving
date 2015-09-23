@@ -18,9 +18,9 @@ object P10 {
   }
 
   def encode2[T](symbols: List[T]) = {
-    def encode(symbols: List[(Int, T)]): List[(Int, T)] = symbols match {
+    def encode(symbols: Iterable[(Int, T)]): List[(Int, T)] = symbols match {
       case (c, s1) :: (1, s2) :: rest if (s1 == s2) ⇒ encode((c + 1, s1) :: rest)
-      case (c, s) :: rest                           ⇒ (c, s) :: encode(rest)
+      case t :: rest                                ⇒ t :: encode(rest)
       case _                                        ⇒ Nil
     }
     encode(Stream.continually(1) zip symbols toList)
@@ -29,9 +29,8 @@ object P10 {
   def encode3[T](symbols: List[T]) = {
     def aggregate(state: List[(Int, T)], event: T) = state match {
       case (c, s) :: rest if (s == event) ⇒ (c + 1, event) :: rest
-      case (c, s) :: rest                 ⇒ (1, event) :: state
-      case _                              ⇒ List((1, event))
+      case _                              ⇒ (1, event) :: state
     }
-    symbols.foldLeft(List(): List[(Int, T)])(aggregate).reverse
+    symbols.foldLeft(Nil: List[(Int, T)])(aggregate).reverse
   }
 }
