@@ -27,7 +27,7 @@ object E027 extends App {
 
   override def main (args: Array[String]) {
     val solution: Solution = quadraticPrimes(1700, 1700)
-    println(s"The quadratic expression that produces the maximum number of primes is:  n² + ${solution.a}n + ${solution.b}")
+    println(s"The quadratic expression that produces the maximum number of primes is:  n² + ${solution.a}n + ${solution.b},  with n=0..${solution.n - 1}")
   }
 
 }
