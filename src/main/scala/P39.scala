@@ -13,4 +13,12 @@ object P39 {
     primes.dropWhile(_ < r.head).takeWhile(_ <= r.last).toList
   }
 
+  private def sievePrimes(candidates : Stream[Int]) : Stream[Int] =
+    candidates.head #:: sievePrimes(candidates.tail.filter((n: Int) => n % candidates.head != 0))
+
+  def streamPrimes = sievePrimes(Stream.from(2))
+
+  def main (args: Array[String]) {
+    println("result= " + streamPrimes.find(x => x > 100000))
+  }
 }
