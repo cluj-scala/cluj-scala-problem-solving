@@ -1,6 +1,7 @@
 # Cluj.scala meetup - Problem solving by learning Scala
 
 Meetup page: http://www.meetup.com/cluj-scala/events/225092732/
+on September 23, 2015 @ ClujHub, Cluj Napoca
 
 This is a project to help us get started at our meetup. It will install Scala & SBT for you, and it contains some examples of solved problems with unit tests.
 
